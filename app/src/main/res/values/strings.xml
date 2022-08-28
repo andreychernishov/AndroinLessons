@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Lesson19</string>
+    <string name="app_name">PifagorApp</string>
+    <string name="title">Вычислить "С"</string>
+    <string name="result_info">Результат: </string>
+    <string name="input_a">Введите а</string>
+    <string name="input_b">Введите б</string>
+    <string name="input_c">Введите с</string>
 </resources>

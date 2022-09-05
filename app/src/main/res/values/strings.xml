@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PifagorApp</string>
+    <string name="app_name" translatable="false">AndroidApp</string>
     <string name="title">Вычислить "С"</string>
     <string name="result_info">Результат: </string>
     <string name="input_a">Введите а</string>

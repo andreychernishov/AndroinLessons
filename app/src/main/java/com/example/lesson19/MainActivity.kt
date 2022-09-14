@@ -1,13 +1,11 @@
 package com.example.lesson19
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lesson19.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +26,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initActionBar()
         init()
+
         editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if (it.resultCode == RESULT_OK){
                 adapter.addPlant(it.data?.getSerializableExtra("plant") as Plant)
@@ -45,5 +45,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+     fun initActionBar(){
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

@@ -5,4 +5,10 @@
     <string name="input_a">Введите а</string>
     <string name="input_b">Введите б</string>
     <string name="input_c">Введите с</string>
+
+    <string name="menu_title">Sync</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_save">Save</string>
+
 </resources>

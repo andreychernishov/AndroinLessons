@@ -3,43 +3,45 @@ package com.example.lesson19
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.lesson19.databinding.ActivityEditBinding
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 
 class EditActivity : AppCompatActivity() {
-    lateinit var binding: ActivityEditBinding
-    private var indexImage = 0
-    private var imageId =  R.drawable.i1
-    private var imageList = listOf(
-        R.drawable.i1,
-        R.drawable.i2,
-        R.drawable.i3,
-        R.drawable.i4,
-        R.drawable.i5
+
+    private var indexImage = 1
+    private var imageId = R.drawable.plant1
+    private val imageIdArrayList = listOf(
+        R.drawable.plant1,
+        R.drawable.plant2,
+        R.drawable.plant3,
+        R.drawable.plant4,
+        R.drawable.plant5
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        initButtons()
-
-
-
+        setContentView(R.layout.activity_edit)
+        initView()
+        nextImage()
+        done()
 
 
     }
-
-    private fun initButtons() = with(binding){
-        nextImageBtn.setOnClickListener {
-            indexImage++
-            if (indexImage > imageList.size - 1){
+    private fun nextImage(){
+        nextImBtn.setOnClickListener {
+             indexImage++
+            if (indexImage > imageIdArrayList.size-1){
                 indexImage = 0
             }
-            imageId = imageList[indexImage]
-            imageView.setImageResource(imageId)
+        imageId = imageIdArrayList[indexImage]
+        image.setImageResource(imageId)
         }
-        doneBtn.setOnClickListener{
-            val plant = Plant(imageId,editTextTitle.text.toString(),editTextDescription.text.toString())
+    }
+
+    private fun done(){
+        doneBtn.setOnClickListener {
+            val plant = Plant(imageId,edTitle.text.toString(),edDesc.text.toString())
             val editIntent = Intent().apply {
                 putExtra("plant", plant)
             }
@@ -47,5 +49,21 @@ class EditActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
+     private fun initView(){
+         image = findViewById(R.id.edit_act_im)
+         nextImBtn= findViewById(R.id.next_im_btn)
+         doneBtn = findViewById(R.id.edit_plant_btn)
+         edTitle = findViewById(R.id.ed_title)
+         edDesc = findViewById(R.id.ed_description)
+    }
+
+    lateinit var image: ImageView
+    lateinit var nextImBtn: Button
+    lateinit var doneBtn: Button
+    lateinit var edTitle : EditText
+    lateinit var edDesc : EditText
+
 
 }
